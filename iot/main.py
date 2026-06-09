@@ -4,36 +4,32 @@ import urequests
 import network
 import random
 
-# Tenta importar os drivers para display OLED, mas envolve em try/except para segurança de inicialização
 try:
     import ssd1306
     HAS_OLED = True
 except ImportError:
     HAS_OLED = False
 
-# Configurações de Rede (SSID padrão do simulador Wokwi)
+# Configurações de Rede (Rede WiFi virtual do simulador Wokwi)
 WIFI_SSID = "Wokwi-GUEST"
 WIFI_PASSWORD = ""
 
-# URL do Backend CardioIA (Ajustar com o IP local ou endereço do deploy na nuvem)
-# IMPORTANTE: se rodar localmente, utilize o IP do seu computador na rede, não use localhost!
-BACKEND_URL = "http://192.168.1.15:8000/api/iot/data"
+# URL do Backend CardioIA exposto via localtunnel
+BACKEND_URL = "https://ten-cities-draw.loca.lt/api/iot/data"
 
 # Configuração de Pinos do ESP32
 # LEDs indicadores
 PIN_LED_VERDE = 12
 PIN_LED_VERMELHO = 14
-
 led_verde = machine.Pin(PIN_LED_VERDE, machine.Pin.OUT)
 led_vermelho = machine.Pin(PIN_LED_VERMELHO, machine.Pin.OUT)
 
 # Barramento I2C para Display OLED SSD1306 (SDA=Pin 21, SCL=Pin 22 no ESP32)
 i2c = machine.I2C(0, scl=machine.Pin(22), sda=machine.Pin(21))
-
 oled = None
 if HAS_OLED:
     try:
-        # Inicializa o display OLED de 128x64 pixels
+        # Inicializa o display OLED
         oled = ssd1306.SSD1306_I2C(128, 64, i2c)
         print("Display OLED inicializado com sucesso.")
     except Exception as e:
@@ -63,7 +59,7 @@ def atualizar_oled(bpm, spo2, temp, status_envio):
         return
     try:
         oled.fill(0)
-        # Cabeçalho
+        # Header
         oled.text("   CARDIOIA IoT   ", 0, 0)
         oled.text("----------------", 0, 8)
         
@@ -98,7 +94,7 @@ def gerenciar_leds(bpm, spo2):
 def simular_sinais_vitais():
     """Gera dados fisiológicos plausíveis para simulação do paciente."""
     # Gera variação leve em relação a um estado basal
-    # 30% de chance de simular um pico de arritmia/taquicardia
+    # 25% de chance de simular um pico de arritmia/taquicardia
     se_crise = random.random() < 0.25
     
     if se_crise:
@@ -140,7 +136,7 @@ def main():
         # 2. Controlar LEDs locais de gravidade
         gerenciar_leds(bpm, spo2)
         
-        # 3. Atualizar o display OLED SSD1306
+        # 3. Atualizar o display OLED
         atualizar_oled(bpm, spo2, temp, status_conexao)
         
         # 4. Transmitir dados para o Backend via HTTP POST
@@ -156,7 +152,10 @@ def main():
             res = urequests.post(
                 BACKEND_URL, 
                 json=payload,
-                headers={"Content-Type": "application/json"}
+                headers={
+                    "Content-Type": "application/json",
+                    "Bypass-Tunnel-Reminder": "true"
+                }
             )
             print("Resposta do Backend:", res.status_code, res.text)
             res.close()
