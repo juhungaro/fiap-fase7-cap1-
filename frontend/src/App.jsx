@@ -878,7 +878,6 @@ const loginStyles = {
   },
   quickButtonSecondary: {
     display: 'flex',
-    justify('center'),
     justifyContent: 'center',
     alignItems: 'center',
     padding: '12px',
