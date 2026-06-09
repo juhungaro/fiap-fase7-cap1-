@@ -26,6 +26,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9c459cd4-2964-48f7-a25e-d143e2c6e5d1"
+      }
+    },
+    "owner": "juhungaro"
   }
 }
