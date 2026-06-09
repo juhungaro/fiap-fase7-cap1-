@@ -1,0 +1,37 @@
+# CardioIA - Root GitIgnore
+
+# Dependências e Pacotes
+node_modules/
+.venv/
+venv/
+ENV/
+env/
+dist/
+build/
+.expo/
+*.apk
+
+# Configurações e Segredos Locais
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local-settings.json
+
+# Logs e Cache
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+.parcel-cache
+.cache/
+logs/decisoes_cardio_ia.jsonl
+
+# IDEs e Sistema Operacional
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

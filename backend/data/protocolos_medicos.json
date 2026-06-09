@@ -1,0 +1,27 @@
+{
+  "por_classificacao": {
+    "baixo": [
+      "Monitorização clínica de rotina",
+      "Orientar sinais de alarme e retorno ambulatorial"
+    ],
+    "moderado": [
+      "Monitorização contínua não invasiva (FC, PA, SpO2)",
+      "Avaliação laboratorial dirigida conforme protocolo institucional",
+      "Considerar observação em unidade intermediária conforme disponibilidade"
+    ],
+    "alto": [
+      "Monitorização contínua em ambiente de maior complexidade",
+      "Acesso vascular, oxigenoterapia titulada conforme SpO2",
+      "Notificar equipe e preparar escalonamento terapêutico"
+    ],
+    "critico": [
+      "Monitorização invasiva/avançada conforme recursos",
+      "Oxigenoterapia de alto fluxo ou suporte ventilatório se indicado",
+      "Ativação de fluxo de emergência e alocação prioritária de leitos/recursos"
+    ]
+  },
+  "gatilhos_spo2": {
+    "critico": 88,
+    "alerta": 92
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "author": "CardioIA Team",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "board-ssd1306", "id": "oled", "top": -120, "left": -150, "attrs": {} },
+    { "type": "wokwi-led", "id": "led_verde", "top": 120, "left": -80, "attrs": { "color": "green" } },
+    { "type": "wokwi-led", "id": "led_vermelho", "top": 120, "left": -20, "attrs": { "color": "red" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 180, "left": -80, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r2", "top": 180, "left": -20, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "esp:GND.1", "oled:GND", "black", [ "h0" ] ],
+    [ "esp:3V3", "oled:VCC", "red", [ "h0" ] ],
+    [ "esp:D22", "oled:SCL", "yellow", [ "h0" ] ],
+    [ "esp:D21", "oled:SDA", "blue", [ "h0" ] ],
+    
+    [ "esp:D12", "r1:1", "green", [ "h0" ] ],
+    [ "r1:2", "led_verde:A", "green", [ "h0" ] ],
+    [ "esp:GND.2", "led_verde:C", "black", [ "h0" ] ],
+    
+    [ "esp:D14", "r2:1", "red", [ "h0" ] ],
+    [ "r2:2", "led_vermelho:A", "red", [ "h0" ] ],
+    [ "esp:GND.2", "led_vermelho:C", "black", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
