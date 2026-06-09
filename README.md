@@ -61,11 +61,11 @@ graph TD
 
 ## 🔗 Links Públicos e Entregáveis
 
-* **Deploy Web (Vercel):** [https://cardioia-plataforma.vercel.app](https://cardioia-plataforma.vercel.app)
+* **Deploy Web (Vercel):** [https://cardioia-plataforma.vercel.app](https://fiap-fase7-cap1.vercel.app/)
   *(Configurado com vercel.json para suporte nativo a rotas SPA e CI/CD ativo ligado ao repositório GitHub)*
 * **Build Mobile (Expo Dashboard - APK):** [https://expo.dev/artifacts/cardioia-mobile-preview-apk](https://expo.dev/artifacts/cardioia-mobile-preview-apk)
   *(Geração automática do arquivo .apk por meio da nuvem EAS Build configurado pelo eas.json)*
-* **Simulação IoT (Wokwi):** [https://wokwi.com/projects/cardioia-micropython-esp32](https://wokwi.com/projects/cardioia-micropython-esp32)
+* **Simulação IoT (Wokwi):** [https://wokwi.com/projects/cardioia-micropython-esp32](https://wokwi.com/projects/466372883994714113)
   *(Hardware completo rodando o script MicroPython com OLED e LEDs sinalizadores)*
 
 ---
