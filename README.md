@@ -88,14 +88,12 @@ graph TD
 
 ```text
 cardioia/
-├── backend/
-├── frontend/
-├── mobile/
-├── iot/
-├── docs/
-├── artifacts/
-├── tests/
-├── scripts/
+├── backend/     
+├── docs/         
+├── frontend/     
+├── iot/          
+├── mobile/       
+├── .gitignore
 └── README.md
 ```
 
