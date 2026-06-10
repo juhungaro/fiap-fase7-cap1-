@@ -230,7 +230,7 @@ https://fiap-fase7-cap1.vercel.app/
 Configurado com vercel.json para suporte nativo a rotas SPA e CI/CD ativo ligado ao repositório GitHub
 
 ### Aplicativo Mobile
-https://expo.dev/artifacts/cardioia-mobile-preview-apk
+https://expo.dev/accounts/juhungaro/projects/cardioia-mobile/builds/b06528e1-80eb-4abf-b480-ba15ea02b567
 
 Geração automática do arquivo .apk por meio da nuvem EAS Build configurado pelo eas.json
 

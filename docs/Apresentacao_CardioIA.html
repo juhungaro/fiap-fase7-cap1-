@@ -275,28 +275,42 @@
       justify-content: space-between;
       width: 100%;
       height: min(45vh, 320px);
-      gap: 15px;
+      gap: 8px;
       margin-top: 10px;
     }
 
     .arch-step {
-      flex: 1;
+      flex: 1.2;
       height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 15px 10px;
-      border-radius: 12px;
+      padding: clamp(0.8rem, 2vh, 1.5rem) clamp(0.6rem, 1.5vw, 1.2rem);
+      border-radius: 16px;
       border: 1px solid var(--border-color);
-      background: rgba(15, 23, 42, 0.4);
+      background: rgba(15, 23, 42, 0.55);
       position: relative;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.35);
+    }
+
+    .arch-step:hover {
+      transform: translateY(-8px);
+      border-color: rgba(37, 99, 235, 0.4);
+      background: rgba(37, 99, 235, 0.08);
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.2);
     }
 
     .arch-step-icon {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
+      font-size: clamp(1.4rem, 3.5vh, 2.2rem);
+      margin-bottom: clamp(6px, 1.5vh, 12px);
+      transition: transform 0.3s ease;
+    }
+
+    .arch-step:hover .arch-step-icon {
+      transform: scale(1.2) rotate(5deg);
     }
 
     .arch-step-title {
@@ -304,24 +318,98 @@
       font-size: clamp(0.85rem, 1.8vh, 1.15rem);
       font-weight: 700;
       color: #fff;
-      margin-bottom: 6px;
+      margin-bottom: clamp(4px, 1vh, 8px);
     }
 
     .arch-step-desc {
-      font-size: 0.72rem;
+      font-size: clamp(0.65rem, 1.4vh, 0.76rem);
       color: var(--text-muted);
-      line-height: 1.3;
+      line-height: 1.35;
     }
 
-    .arch-arrow {
-      font-size: 1.5rem;
-      color: var(--primary);
-      animation: arrow-bounce 1.5s infinite ease-in-out;
+    .arch-step-badge {
+      position: absolute;
+      top: -10px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
     }
 
-    @keyframes arrow-bounce {
-      0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(6px); }
+    .arch-step:nth-child(3) .arch-step-badge {
+      background: #10b981; /* Verde */
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+    }
+
+    .arch-step:nth-child(5) .arch-step-badge {
+      background: #f59e0b; /* Laranja */
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+    }
+
+    .arch-step:nth-child(7) .arch-step-badge {
+      background: #ef4444; /* Vermelho */
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+    }
+
+    /* Pipelines de Conexão Animados */
+    .arch-pipe-container {
+      flex: 0.4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 30px;
+    }
+
+    .arch-pipe-svg {
+      width: 100%;
+      height: 20px;
+      overflow: visible;
+    }
+
+    .arch-pipe-line-bg {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.08);
+      stroke-width: 4;
+      stroke-linecap: round;
+    }
+
+    .arch-pipe-line-flow {
+      fill: none;
+      stroke: var(--primary);
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-dasharray: 10 15;
+      animation: pipe-flow 1.2s linear infinite;
+    }
+
+    .arch-pipe-container:nth-child(4) .arch-pipe-line-flow {
+      stroke: #10b981;
+    }
+
+    .arch-pipe-container:nth-child(6) .arch-pipe-line-flow {
+      stroke: #f59e0b;
+    }
+
+    .arch-pipe-label {
+      font-size: 0.58rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    @keyframes pipe-flow {
+      to {
+        stroke-dashoffset: -25;
+      }
     }
 
     /* Slide 4 e 5 - Listas e Features */
@@ -418,7 +506,7 @@
     <div class="slide active" id="slide-1">
       <div class="slide-header">
         <div class="slide-logo-group">
-          <img src="logo.png" alt="CardioIA" class="slide-logo-img">
+          <img src="logo.svg" alt="CardioIA" class="slide-logo-img">
           <span class="slide-logo-text">CardioIA</span>
         </div>
         <span class="slide-tag">Fase 7 — Entrega Final</span>
@@ -428,7 +516,7 @@
         <div class="capa-container">
           <div class="capa-main">
             <div class="logo-large-container">
-              <img src="logo.png" alt="CardioIA" class="logo-large pulse-heart">
+              <img src="logo.svg" alt="CardioIA" class="logo-large pulse-heart">
               <div>
                 <span style="font-size: 0.8rem; font-weight: 700; color: var(--danger); text-transform: uppercase; letter-spacing: 2px;">FIAP Acadêmico</span>
                 <div style="font-size: 1.2rem; font-weight: 400; color: var(--text-muted);">FIAP - Engenharia de Software</div>
@@ -466,7 +554,7 @@
     <div class="slide" id="slide-2">
       <div class="slide-header">
         <div class="slide-logo-group">
-          <img src="logo.png" alt="CardioIA" class="slide-logo-img">
+          <img src="logo.svg" alt="CardioIA" class="slide-logo-img">
           <span class="slide-logo-text">CardioIA</span>
         </div>
         <span class="slide-tag">Visão Geral</span>
@@ -508,7 +596,7 @@
     <div class="slide" id="slide-3">
       <div class="slide-header">
         <div class="slide-logo-group">
-          <img src="logo.png" alt="CardioIA" class="slide-logo-img">
+          <img src="logo.svg" alt="CardioIA" class="slide-logo-img">
           <span class="slide-logo-text">CardioIA</span>
         </div>
         <span class="slide-tag">Arquitetura</span>
@@ -522,36 +610,61 @@
             
             <!-- Sensor IoT -->
             <div class="arch-step">
+              <span class="arch-step-badge">Camada 1</span>
               <div class="arch-step-icon">📡</div>
               <div class="arch-step-title">Hardware IoT</div>
-              <div class="arch-step-desc">ESP32 + MicroPython simula e exibe sensores locais</div>
+              <div class="arch-step-desc">ESP32 + MicroPython simula sensores, exibe no OLED e controla alertas físicos (LEDs Verde/Vermelho)</div>
             </div>
             
-            <div class="arch-arrow">➔</div>
+            <!-- Connection 1 -->
+            <div class="arch-pipe-container">
+              <svg class="arch-pipe-svg" viewBox="0 0 50 20">
+                <path d="M 0 10 L 50 10" class="arch-pipe-line-bg" />
+                <path d="M 0 10 L 50 10" class="arch-pipe-line-flow" />
+              </svg>
+              <span class="arch-pipe-label">HTTP POST</span>
+            </div>
             
             <!-- API Gateway -->
             <div class="arch-step">
+              <span class="arch-step-badge">Camada 2</span>
               <div class="arch-step-icon">⚙️</div>
               <div class="arch-step-title">API Gateway</div>
-              <div class="arch-step-desc">FastAPI recebe telemetria e gerencia o estado</div>
+              <div class="arch-step-desc">FastAPI gerencia rotas, recebe telemetria em JSON e mantém histórico dinâmico em memória</div>
             </div>
             
-            <div class="arch-arrow">➔</div>
+            <!-- Connection 2 -->
+            <div class="arch-pipe-container">
+              <svg class="arch-pipe-svg" viewBox="0 0 50 20">
+                <path d="M 0 10 L 50 10" class="arch-pipe-line-bg" />
+                <path d="M 0 10 L 50 10" class="arch-pipe-line-flow" />
+              </svg>
+              <span class="arch-pipe-label">IA Pipelines</span>
+            </div>
             
             <!-- Inteligência Artificial -->
             <div class="arch-step">
+              <span class="arch-step-badge">Camada 3</span>
               <div class="arch-step-icon">🤖</div>
               <div class="arch-step-title">Motores IA</div>
-              <div class="arch-step-desc">Predict ML (.joblib) e Multiagentes (OpenAI Agents)</div>
+              <div class="arch-step-desc">RandomForestClassifier (.joblib) prevê riscos, e agentes (OpenAI SDK) rodam a governança</div>
             </div>
             
-            <div class="arch-arrow">➔</div>
+            <!-- Connection 3 -->
+            <div class="arch-pipe-container">
+              <svg class="arch-pipe-svg" viewBox="0 0 50 20">
+                <path d="M 0 10 L 50 10" class="arch-pipe-line-bg" />
+                <path d="M 0 10 L 50 10" class="arch-pipe-line-flow" />
+              </svg>
+              <span class="arch-pipe-label">Web / Mobile</span>
+            </div>
             
             <!-- Interfaces -->
             <div class="arch-step">
+              <span class="arch-step-badge">Camada 4</span>
               <div class="arch-step-icon">🖥️</div>
               <div class="arch-step-title">Interfaces UI</div>
-              <div class="arch-step-desc">Web Vercel e Mobile APK exibem dados em tempo real</div>
+              <div class="arch-step-desc">Painel Web (React/Vite na Vercel) e Mobile App (React Native/Expo APK) com triagem e chat</div>
             </div>
             
           </div>
@@ -568,7 +681,7 @@
     <div class="slide" id="slide-4">
       <div class="slide-header">
         <div class="slide-logo-group">
-          <img src="logo.png" alt="CardioIA" class="slide-logo-img">
+          <img src="logo.svg" alt="CardioIA" class="slide-logo-img">
           <span class="slide-logo-text">CardioIA</span>
         </div>
         <span class="slide-tag">IoT & Hardware</span>
@@ -624,7 +737,7 @@
     <div class="slide" id="slide-5">
       <div class="slide-header">
         <div class="slide-logo-group">
-          <img src="logo.png" alt="CardioIA" class="slide-logo-img">
+          <img src="logo.svg" alt="CardioIA" class="slide-logo-img">
           <span class="slide-logo-text">CardioIA</span>
         </div>
         <span class="slide-tag">IA & Governança</span>
@@ -680,7 +793,7 @@
     <div class="slide" id="slide-6">
       <div class="slide-header">
         <div class="slide-logo-group">
-          <img src="logo.png" alt="CardioIA" class="slide-logo-img">
+          <img src="logo.svg" alt="CardioIA" class="slide-logo-img">
           <span class="slide-logo-text">CardioIA</span>
         </div>
         <span class="slide-tag">Distribuição</span>
