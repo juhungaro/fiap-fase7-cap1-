@@ -14,8 +14,8 @@ except ImportError:
 WIFI_SSID = "Wokwi-GUEST"
 WIFI_PASSWORD = ""
 
-# URL do Backend CardioIA exposto via localtunnel
-BACKEND_URL = "https://ten-cities-draw.loca.lt/api/iot/data"
+# URL do Backend CardioIA exposto via localtunnel (HTTP para evitar falhas de SSL no ESP32)
+BACKEND_URL = "http://ten-cities-draw.loca.lt/api/iot/data"
 
 # Configuração de Pinos do ESP32
 # LEDs indicadores
